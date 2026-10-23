@@ -1,4 +1,5 @@
 // Cardápio informado pela confeiteira. Valores de referência, sem orçamento automático.
+export const cakeBatters = ["Chiffon", "Pão de ló", "Amanteigada", "Red Velvet"];
 export const cakeCategories = [
   { name: "Tradicional", price: 90 }, { name: "Trufado", price: 105 }, { name: "Gourmet", price: 105 },
   { name: "Red Velvet", price: 130 }, { name: "Floresta Negra", price: 130 }, { name: "Naked Cake", price: 145 },
