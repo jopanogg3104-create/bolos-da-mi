@@ -1,4 +1,7 @@
 // Cardápio informado pela confeiteira. Valores de referência, sem orçamento automático.
+export const cakeBatterFlavors = ["Chocolate", "Baunilha"];
+export const cakeFrostings = ["Chantilly", "Ganache", "Buttercream"];
+export const cakeFinishes = ["Branco natural (sem corante)", "Colorida (com corante)"];
 export const cakeBatters = ["Chiffon", "Pão de ló", "Amanteigada", "Red Velvet"];
 export const cakeCategories = [
   { name: "Tradicional", price: 90 }, { name: "Trufado", price: 105 }, { name: "Gourmet", price: 105 },

@@ -9,6 +9,7 @@ const assert=require('node:assert/strict');
   await page.goto((process.env.BROWSER_BASE_URL||'http://localhost:3050')+'/monte-seu-bolo');
   const form=page.locator('.builder form');
   const next=()=>form.getByRole('button',{name:'Continuar',exact:true}).click();
+  await page.waitForFunction(()=>localStorage.getItem('mi-cart')!==null);
   const before=await page.evaluate(()=>JSON.stringify([localStorage,sessionStorage]));
   await form.getByRole('combobox',{name:'Tipo de bolo',exact:true}).selectOption({label:'Quero ajuda da Mi para escolher'});
   await next();

@@ -2012,3 +2012,5 @@ footer.cinematic-footer { position: relative; display: flex; flex-direction: col
  .simple-builder .form-grid{gap:18px}
  .simple-builder .builder-guidance{margin-bottom:8px}
 }
+.simple-builder .cake-covering{padding-top:20px;border-top:1px solid var(--line)}
+.simple-builder .cake-covering>legend{font-family:"Lora",serif;font-size:21px;padding-top:12px}

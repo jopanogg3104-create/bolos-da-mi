@@ -42,3 +42,15 @@ test('help flow accepts unknown category and weight without inventing a price',a
  assert.ok(!text.includes('undefined')&&!text.includes('Total estimado:')&&!text.includes('R$'));
  assert.ok(validateGuidedCakeStep(2,{...c,weightUnknown:false,weight:''}));
 });
+
+test('flavor, covering and color preferences reach WhatsApp without stale hidden colors',async()=>{
+ const {cakeFinish,cakeEstimate}=await import('../lib/guided-cake');
+ const c={...emptyGuidedCake,category:'Tradicional',weight:'2',batter:'Chiffon',batterFlavor:'Chocolate',frosting:'Ganache',finish:'Colorida (com corante)',colors:'Rosa e branco'};
+ const message=guidedCakeMessage(c);
+ for(const value of ['Massa: Chiffon','Sabor da massa: Chocolate','Cobertura desejada: Ganache','Colorida (com corante) — Rosa e branco'])assert.ok(message.includes(value));
+ const white={...c,finish:'Branco natural (sem corante)'};
+ assert.equal(cakeFinish(white),'Branco natural (sem corante)');
+ assert.ok(!guidedCakeMessage(white).includes('Rosa e branco'));
+ assert.equal(cakeEstimate(c)!.total,cakeEstimate(white)!.total);
+ assert.ok(guidedCakeMessage({...c,batterFlavor:'',frosting:'',finish:''}).includes('Cobertura desejada: A combinar com a Mi'));
+});

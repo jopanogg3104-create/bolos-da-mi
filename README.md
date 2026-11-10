@@ -124,3 +124,7 @@ A antiga tela de carregamento foi preservada em `components/store-loading.tsx`, 
 A montagem mantém cinco etapas. Tipo de bolo e massa usam seletores compactos; adicionais ficam recolhidos até o cliente abrir. As opções de ajuda permitem combinar categoria, recheios ou peso com a Mi. Peso desconhecido não gera preço estimado nem reutiliza um peso digitado anteriormente na mensagem. O cliente continua podendo editar o resumo e confirmar os dados antes do WhatsApp. As escolhas permanecem no estado React, sem persistência ou APIs.
 
 Teste adicional do caminho com ajuda: `BROWSER_BASE_URL=http://localhost:3051 node tests/easier-builder-browser.cjs` (servidor em execução nessa porta).
+
+### Sabor da massa, cobertura e cor
+
+O sabor (Chocolate ou Baunilha) é separado do tipo de massa (Chiffon, Pão de ló, Amanteigada, Red Velvet). Na decoração, o cliente informa a cobertura desejada (Chantilly, Ganache ou Buttercream), branco natural sem corante ou colorido com corante. O campo de cores aparece apenas para cobertura colorida; cores antigas ficam fora do resumo e do WhatsApp ao trocar para branco natural. São preferências a confirmar com a Mi, sem novos acréscimos automáticos. Todos os campos aceitam ajuda da Mi e aparecem no resumo editável.
