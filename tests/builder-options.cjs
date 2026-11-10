@@ -19,7 +19,7 @@ module.exports = async function checkOptions(browser, base) {
   await page.route("**/__builder_fixture", route => route.fulfill({ contentType: "text/html", body: '<div id="root"></div><script>' + result.outputFiles[0].text.replaceAll('</script>', '<\\/script>') + '</script>' }));
   await page.goto(base + "/__builder_fixture");
   const next = () => page.getByRole("button", { name: "Continuar", exact: true }).click();
-  await page.getByRole('button',{name:/^Tradicional/}).click(); await next();
+  await page.getByRole('combobox',{name:'Tipo de bolo',exact:true}).selectOption('Tradicional'); await next();
   await page.getByRole('checkbox',{name:'Brigadeiro (cacau 100%)',exact:true}).check();
   await page.getByRole('button',{name:'Gourmet',exact:true}).click();
   await page.getByRole('checkbox',{name:'Ganache de limão siciliano',exact:true}).check();

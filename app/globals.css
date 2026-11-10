@@ -1972,3 +1972,43 @@ footer.cinematic-footer { position: relative; display: flex; flex-direction: col
 @media(prefers-reduced-motion:reduce){.tilt-media-surface{transform:none!important;transition:none}}
 .intro-cake-photo{display:block;width:100%;height:auto;border-radius:28px 48px 28px 48px;box-shadow:0 12px 28px rgba(79,42,62,.09)}
 @media(max-width:800px){.intro-cake-photo{border-radius:20px 32px 20px 32px}}
+/* Easier cake ordering: compact choices and visible mobile navigation. */
+.simple-builder .builder-current-step{font-size:15px;color:var(--ink);margin:12px 0}
+.simple-builder .builder-question{scroll-margin-top:100px}
+.simple-builder label select,.simple-builder label input,.simple-builder textarea{font-size:16px;min-height:48px}
+.simple-builder .weight-help{display:flex;align-items:center;gap:12px;cursor:pointer}
+.simple-builder input[type=checkbox]{width:22px;height:22px;min-height:22px;flex:0 0 22px;accent-color:var(--strong)}
+.simple-builder .choice{font-size:15px;line-height:1.5;gap:12px}
+.simple-builder .choice:has(input:disabled){opacity:.65}
+.simple-builder .filling-selection-status{margin:16px 0;padding:14px 16px;background:var(--rose);border-radius:12px;font-size:14px}
+.simple-builder .filling-selection-status p{margin:8px 0 0;line-height:1.5}
+.simple-builder .selected-fillings button{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;text-align:left}
+.builder-extras{border:1px solid var(--line);border-radius:16px;padding:16px}
+.builder-extras summary{cursor:pointer;font-weight:600;min-height:44px}
+.builder-extras summary small{display:block;font-weight:400;color:var(--muted);margin-top:6px;line-height:1.6}
+.builder-extras fieldset{margin-top:20px}
+@media(max-width:760px){
+ .simple-builder .section-head{margin-bottom:24px}
+ .simple-builder .section-head h1{font-size:36px}
+ .simple-builder .builder{gap:20px}
+ .simple-builder .builder>aside{padding:0;border:0}
+ .simple-builder .builder>aside ol,.simple-builder .builder>aside>p:last-child{display:none}
+ .simple-builder .builder>aside .builder-current-step{display:none}
+ .simple-builder .builder>form{padding:0;overflow:visible}
+ .simple-builder .choices{grid-template-columns:1fr}
+ .simple-builder .filling-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .simple-builder .filling-tabs button{font-size:12px;padding:10px 6px;min-height:46px}
+ .simple-builder .form-actions{position:sticky;bottom:0;z-index:4;display:flex;gap:12px;background:var(--cream);border-top:1px solid var(--line);padding:12px 0 max(12px,env(safe-area-inset-bottom));margin-top:28px}
+ .simple-builder .form-actions .button{min-height:52px}
+}
+.simple-builder input,.simple-builder select,.simple-builder textarea{scroll-margin-block:120px}
+@media(max-width:760px){
+ .simple-builder{padding-top:28px}
+ .simple-builder .section-head{gap:12px}
+ .simple-builder .section-head .eyebrow{display:none}
+ .simple-builder .builder{margin-top:20px;padding-top:18px}
+ .simple-builder .builder-step-panel{padding-bottom:20px}
+ .simple-builder form[data-step="0"] .form-actions{position:static}
+ .simple-builder .form-grid{gap:18px}
+ .simple-builder .builder-guidance{margin-bottom:8px}
+}

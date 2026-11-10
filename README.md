@@ -118,3 +118,9 @@ A antiga tela de carregamento foi preservada em `components/store-loading.tsx`, 
 ### Rodapé com movimento
 
 `components/ui/motion-footer.tsx` adapta o CinematicFooter enviado pelo usuário para o Bolos da Mi. Usa GSAP/ScrollTrigger, texto de marca em fundo, faixa inclinada e botões magnéticos de movimento limitado. Mantém Lora/Manrope locais, rosa pastel, contatos oficiais e links secundários recolhidos. Em telas de computador com altura suficiente, a cortina revela o rodapé fixo ao final da rolagem. Em celulares, sem JavaScript, com movimento reduzido ou com links secundários expandidos, o rodapé fica no fluxo da página para preservar a leitura e a navegação. Não inclui links fictícios de aplicativos, fontes externas, imagens de banco ou emojis. As animações respondem à preferência de movimento reduzido; os listeners e timelines são limpos ao desmontar.
+
+## Montagem simplificada no celular
+
+A montagem mantém cinco etapas. Tipo de bolo e massa usam seletores compactos; adicionais ficam recolhidos até o cliente abrir. As opções de ajuda permitem combinar categoria, recheios ou peso com a Mi. Peso desconhecido não gera preço estimado nem reutiliza um peso digitado anteriormente na mensagem. O cliente continua podendo editar o resumo e confirmar os dados antes do WhatsApp. As escolhas permanecem no estado React, sem persistência ou APIs.
+
+Teste adicional do caminho com ajuda: `BROWSER_BASE_URL=http://localhost:3051 node tests/easier-builder-browser.cjs` (servidor em execução nessa porta).

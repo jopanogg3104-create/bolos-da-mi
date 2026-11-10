@@ -30,3 +30,15 @@ test('estimate uses kg, unit quantities and minimum extras without delivery fees
  assert.equal(cakeEstimate({...c,method:'Entrega'})!.total,364);
  assert.match(guidedCakeMessage({...c,method:'Entrega'}),/taxa de entrega não incluída/);
 });
+
+test('help flow accepts unknown category and weight without inventing a price',async()=>{
+ const {cakeHelp,cakeEstimate}=await import('../lib/guided-cake');
+ const c={...emptyGuidedCake,category:cakeHelp,fillings:[cakeHelp],weight:'3',weightUnknown:true};
+ for(const step of [0,1,2])assert.equal(validateGuidedCakeStep(step,c),'');
+ assert.equal(cakeEstimate(c),null);
+ const text=guidedCakeMessage(c);
+ assert.ok(text.includes('Peso desejado: A combinar com a Mi'));
+ assert.ok(!text.includes('3 kg'));
+ assert.ok(!text.includes('undefined')&&!text.includes('Total estimado:')&&!text.includes('R$'));
+ assert.ok(validateGuidedCakeStep(2,{...c,weightUnknown:false,weight:''}));
+});

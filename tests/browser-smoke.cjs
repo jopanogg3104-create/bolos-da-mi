@@ -60,7 +60,7 @@ const executablePath =
   const next = () => form.getByRole('button', {name:'Continuar',exact:true}).click();
   await next();
   await page.locator('.error[role=alert]').waitFor();
-  await form.getByRole('button',{name:/^Tradicional/}).click();
+  await form.getByRole('combobox',{name:'Tipo de bolo',exact:true}).selectOption('Tradicional');
   await next();
   await form.getByRole('checkbox',{name:'Brigadeiro branco',exact:true}).check();
   await next();
@@ -89,7 +89,7 @@ const executablePath =
   assert.deepEqual(builderRequests,[],'Montagem não consulta APIs nem envia escolhas');
   page.off('request',watchBuilder);
   await page.reload();
-  assert.equal(await form.getByRole('button',{name:/^Tradicional/}).getAttribute('aria-pressed'),'false');
+  assert.equal(await form.getByRole('combobox',{name:'Tipo de bolo',exact:true}).inputValue(),'');
   await page.evaluate(() =>
     localStorage.setItem(
       "mi-cart",
@@ -117,7 +117,7 @@ const executablePath =
   await page.reload();
   assert.equal(await page.getByLabel("Quantidade").first().inputValue(), "3");
   const cartHref = await page
-    .getByRole("link", { name: "Faça seu orçamento", exact: false })
+    .getByRole("link", { name: "Enviar pedido pelo WhatsApp", exact: false })
     .getAttribute("href");
   assert.match(
     new URL(cartHref).searchParams.get("text"),
@@ -161,7 +161,7 @@ const executablePath =
     }
   }
   await page.goto(base + "/monte-seu-bolo");
-  await page.locator('.builder form').getByRole('button',{name:/^Tradicional/}).click();
+  await form.getByRole('combobox',{name:'Tipo de bolo',exact:true}).selectOption('Tradicional');
   await next();
   await form.getByRole('checkbox',{name:'Doce de leite com coco',exact:true}).check();
   await next();
